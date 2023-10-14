@@ -10,6 +10,7 @@ DOWN = 270
 
 class Snake:
     """Snake class handles methods related to the snake(creation, growth, movement)"""
+
     def __init__(self):
         self.segments = []
         self.crete_snake()
@@ -27,6 +28,13 @@ class Snake:
         box.color("white")
         box.goto(position)
         self.segments.append(box)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+        self.segments.clear()
+        self.crete_snake()
+        self.head = self.segments[0]
 
     def extend(self):
         """Increase the snake length by 1 for each food it eats"""
